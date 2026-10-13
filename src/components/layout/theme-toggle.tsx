@@ -1,19 +1,13 @@
 "use client";
 import { useEffect, useState } from "react";
 import { Moon, Sun } from "lucide-react";
-export function ThemeToggle() {
-  const [theme,setTheme] = useState<"dark"|"light">("dark");
-  useEffect(() => {
-    const saved = localStorage.getItem("campuscare-theme");
-    const initial = saved === "light" ? "light" : "dark";
-    document.documentElement.dataset.theme = initial;
-    setTheme(initial);
-  },[]);
-  function toggle() {
-    const next = theme === "dark" ? "light" : "dark";
-    setTheme(next);
-    document.documentElement.dataset.theme = next;
-    localStorage.setItem("campuscare-theme",next);
-  }
-  return <button type="button" className="theme-button" onClick={toggle} aria-label={theme==="dark"?"Enable light theme":"Enable dark theme"} title="Toggle theme">{theme==="dark"?<Sun size={18}/>:<Moon size={18}/>}</button>;
+export function ThemeToggle(){
+ const [theme,setTheme]=useState<"dark"|"light">("dark");
+ useEffect(()=>{
+  const saved=localStorage.getItem("campuscare-theme");
+  const preferred=saved==="light"||saved==="dark"?saved:(window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");
+  document.documentElement.dataset.theme=preferred;setTheme(preferred);
+ },[]);
+ function toggle(){const next=theme==="dark"?"light":"dark";setTheme(next);document.documentElement.dataset.theme=next;localStorage.setItem("campuscare-theme",next)}
+ return <button type="button" className="theme-button p1-theme-button" onClick={toggle} aria-label={theme==="dark"?"Switch to light mode":"Switch to dark mode"} title={theme==="dark"?"Light mode":"Dark mode"}>{theme==="dark"?<Sun size={18}/>:<Moon size={18}/>}</button>;
 }
