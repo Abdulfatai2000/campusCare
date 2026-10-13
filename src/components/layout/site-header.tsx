@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { ArrowRight, Menu, Search, X, ClipboardCheck, Building2, ShieldAlert, House, Info, Mail, type LucideIcon } from "lucide-react";
 import { useEffect,useRef,useState } from "react";
 import { ThemeToggle } from "./theme-toggle";
@@ -9,6 +9,7 @@ const nav:NavLink[]=[{label:"Home",href:"/",icon:House},{label:"Services",href:"
 const searchItems=[...nav,{label:"Features",href:"/features",icon:Info},{label:"Contact",href:"/contact",icon:Mail},{label:"Appointments",href:"/appointments",icon:Building2}];
 export function SiteHeader(){
  const pathname=usePathname();
+ const router=useRouter();
  const [menu,setMenu]=useState(false);
  const [query,setQuery]=useState("");
  const [focused,setFocused]=useState(false);
@@ -21,8 +22,9 @@ export function SiteHeader(){
   <nav className="site-nav p1-site-nav" aria-label="Main navigation">{nav.map(x=><Link key={x.href} href={x.href} className={pathname===x.href?"nav-current":""} aria-current={pathname===x.href?"page":undefined}>{x.label}</Link>)}</nav>
   <div className="p1-header-tools">
    <div ref={searchRef} className="p1-search" onBlur={event=>{if(!searchRef.current?.contains(event.relatedTarget)){setFocused(false)}}}>
-    <Search size={16} aria-hidden="true"/><input aria-label="Search CampusCare pages" value={query} onChange={e=>{setQuery(e.target.value);setFocused(true)}} onFocus={()=>setFocused(true)} placeholder="Find campus services..." role="combobox" aria-expanded={focused&&query.trim().length>0} aria-controls="campuscare-search-results" aria-autocomplete="list"/>
-    {focused&&query.trim().length>0&&<div className="p1-search-results" id="campuscare-search-results" role="listbox">{suggestions.length?suggestions.map(x=><Link role="option" aria-selected={false} key={x.href} href={x.href} onClick={()=>{setFocused(false);setQuery("")}}><x.icon size={16}/>{x.label}<ArrowRight size={14}/></Link>):<p>No matching pages. Try “services” or “emergency”.</p>}</div>}
+    <Search size={16} aria-hidden="true"/><input aria-label="Search CampusCare pages" value={query} onChange={e=>{setQuery(e.target.value);setFocused(true)}} onFocus={()=>setFocused(true)} onKeyDown={event=>{if(event.key==="Enter"&&suggestions.length){event.preventDefault();router.push(suggestions[0].href);setQuery("");setFocused(false)}}} type="search" placeholder="Find campus services..." aria-describedby="campuscare-search-help"/>
+    <span className="sr-only" id="campuscare-search-help">Type to find pages, press Enter to open the first match, or Tab to a suggestion.</span>
+    {focused&&query.trim().length>0&&<div className="p1-search-results" id="campuscare-search-results" role="region" aria-label="Suggested CampusCare pages">{suggestions.length?suggestions.map(x=><Link key={x.href} href={x.href} onClick={()=>{setFocused(false);setQuery("")}}><x.icon size={16}/>{x.label}<ArrowRight size={14}/></Link>):<p>No matching pages. Try “services” or “emergency”.</p>}</div>}
    </div>
    <ThemeToggle/>
    <Link className="p1-login-link" href="/auth/login">Log in</Link><Link className="button p1-button p1-header-cta" href="/auth/signup">Get started <ArrowRight size={15}/></Link>
