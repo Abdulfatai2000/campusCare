@@ -23,3 +23,5 @@ jobs:
         run: npm run build
       - name: Verify scaffold structure
         run: node scripts/verify-scaffold.mjs
+      - name: Smoke-test all Phase 1 pages
+        run: node scripts/smoke-phase1.mjs
