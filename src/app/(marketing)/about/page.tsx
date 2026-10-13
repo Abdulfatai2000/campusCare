@@ -1,7 +1,9 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, Code2, GraduationCap, HeartHandshake, Lightbulb, ShieldCheck, UsersRound } from "lucide-react";
 import { PageBanner } from "@/components/marketing/page-banner";
 import { Reveal } from "@/components/marketing/reveal";
+export const metadata: Metadata = {title: "Our Story & Vision",description: "Learn why CampusCare is exploring simpler, more connected student support experiences, starting with an independent OAU-first pilot."};
 export default function AboutPage(){
  return <div className="p1-marketing"><div className="container"><PageBanner eyebrow="OUR STORY / WHY CAMPUSCARE" title="Big changes begin" accent="with a little care." description="A student-led idea inspired by a simple belief: navigating campus support should be clearer, more reliable and less stressful." ctaHref="/contact" ctaLabel="Start a conversation"/>
  <section className="p1-section p1-about-story"><Reveal><div><span className="eyebrow">WHERE IT ALL BEGAN</span><h2>We’re building the<br/><span className="text-accent">campus we wish to see.</span></h2></div></Reveal><Reveal delay={100}><div className="p1-story-copy"><p>When a classroom facility breaks, a student needs help or a request gets lost between offices, the problem isn’t always a lack of care. Sometimes, it’s a lack of a simple, connected process.</p><p>CampusCare started as a mobile-development exercise. Today, it is growing into a thoughtful full-stack project exploring how students might better connect with everyday campus services.</p><p>The first design context is Obafemi Awolowo University, Ile-Ife. This is an independent project, not an official platform or university partnership.</p><Link href="/features" className="p1-text-link">See what we’re designing <ArrowRight size={17}/></Link></div></Reveal></section>

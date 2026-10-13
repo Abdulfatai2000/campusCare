@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, BellRing, CalendarDays, CheckCircle2, ClipboardList, Grid2X2, HeartHandshake, ShieldCheck, ShieldAlert, Sparkles, UsersRound, Wrench } from "lucide-react";
 import { CampusScene } from "@/components/marketing/campus-scene";
@@ -10,6 +11,7 @@ const highlights=[
  {icon:CalendarDays,tone:"purple",name:"Request appointments",description:"Plan visits and ask for help from participating campus services.",href:"/appointments"}
 ];
 const steps=[{title:"Tell us what matters",detail:"Choose a service or describe an issue with the context that matters.",icon:ClipboardList},{title:"Connect with support",detail:"Authorized service teams will review your request once CampusCare is live.",icon:UsersRound},{title:"Stay in the know",detail:"Follow genuine updates and see the outcome of your request.",icon:CheckCircle2}];
+export const metadata: Metadata = {title: "Student Services, Support & CampusCare",description: "Explore CampusCare: an independent OAU-first student-services concept for issue reporting, campus support, emergency guidance and appointment requests."};
 export default function HomePage(){
  return <div className="p1-marketing">
  <section className="p1-home-hero"><div className="container p1-hero-grid"><div className="p1-hero-copy">

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, BarChart3, BellRing, Building2, CalendarClock, ClipboardCheck, HeartHandshake, LockKeyhole, ShieldAlert, Wrench, type LucideIcon } from "lucide-react";
 import { PageBanner } from "@/components/marketing/page-banner";
@@ -10,6 +11,7 @@ const featureGroups:{num:string;name:string;detail:string;icon:LucideIcon;tone:s
  {num:"05",name:"Updates & notifications",detail:"Know when something changes without chasing through different channels.",icon:BellRing,tone:"green",points:["Report updates","Appointment status notices","Respectful notification preferences"],href:"/notifications"},
  {num:"06",name:"Campus operations",detail:"A future workspace for authorized service administrators.",icon:BarChart3,tone:"blue",points:["Organized request queues","Assignment and resolution workflows","Data-informed service improvements"],href:"/admin"}
 ];
+export const metadata: Metadata = {title: "What CampusCare Can Do",description: "See the CampusCare concept: issue reporting, service discovery, appointment requests, safety information and future university administration."};
 export default function FeaturesPage(){
  return <div className="p1-marketing"><div className="container"><PageBanner eyebrow="DISCOVER CAMPUSCARE" title="Everyday campus support," accent="beautifully connected." description="From finding help to following up on a concern, we're designing one clear place to navigate the services that matter to students." ctaHref="/dashboard" ctaLabel="Explore the demo"/>
  <section className="p1-section"><Reveal><div className="p1-section-heading"><span className="eyebrow">MADE FOR HOW CAMPUS WORKS</span><h2>Everything in its<br/><span className="text-accent">right place.</span></h2><p>Explore the six core experiences being designed into the CampusCare platform.</p></div></Reveal><div className="p1-feature-grid">{featureGroups.map((f,i)=><Reveal key={f.num} delay={(i%3)*75}><article className="p1-feature-card"><div className="p1-feature-card-top"><span className={"p1-feature-icon "+f.tone}><f.icon size={26}/></span><span className="p1-num">{f.num} / 06</span></div><h3>{f.name}</h3><p>{f.detail}</p><ul>{f.points.map(x=><li key={x}>{x}</li>)}</ul><Link href={f.href}>Explore {f.name.toLowerCase()} <ArrowRight size={16}/></Link></article></Reveal>)}</div></section>
