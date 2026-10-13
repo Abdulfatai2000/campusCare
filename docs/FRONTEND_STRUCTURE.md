@@ -1,24 +1,36 @@
-# Frontend Structure — Phase 0
+# CampusCare frontend structure — Phase 1 handoff
 
-## Marketing routes (4)
-`/`, `/features`, `/about`, `/contact`.
+## Phase 1 — finished public and auth routes (8)
 
-## Authentication previews (4)
-`/auth/login`, `/auth/signup`, `/auth/forgot-password`, `/auth/reset-password`.
+- Marketing: `/`, `/features`, `/about`, `/contact`.
+- Authentication UI previews: `/auth/login`, `/auth/signup`, `/auth/forgot-password`, `/auth/reset-password`.
 
-Forms are disabled: they do not collect credentials until real Auth.js backend functionality is implemented.
+**Status:** polished responsive pages and interaction-level previews. Auth forms support validation and password visibility but do **not** collect credentials server-side, authenticate users, send emails, change passwords or create accounts. The Contact form opens a local email draft, without claiming successful delivery.
 
-## Student workspace (12)
-`/dashboard`, `/report-issue`, `/my-reports`, `/my-reports/[id]`, `/services`, `/services/[id]`, `/appointments`, `/appointments/new`, `/emergency`, `/notifications`, `/profile`, `/settings`.
+Styling: `src/app/globals.css` (base), `src/app/phase1.css` (marketing), `src/app/phase1-auth.css` (auth). Shared components are in `src/components/marketing`, `src/components/auth` and `src/components/layout`. Browser-side theme preference is local-only.
 
-## Campus admin workspace (9)
+## Frontend Phase 2 — core student routes (6)
+
+`/dashboard`, `/report-issue`, `/my-reports`, `/my-reports/[id]`, `/services`, `/services/[id]`.
+
+## Frontend Phase 3 — student support and account routes (6)
+
+`/appointments`, `/appointments/new`, `/emergency`, `/notifications`, `/profile`, `/settings`.
+
+## Frontend Phase 4 — admin portal routes (9)
+
 `/admin`, `/admin/reports`, `/admin/reports/[id]`, `/admin/services`, `/admin/appointments`, `/admin/emergency-contacts`, `/admin/users`, `/admin/analytics`, `/admin/settings`.
 
-## Reuse
-- `src/components/layout`: site header/footer, theme toggle, workspace shell.
-- `src/components/shared`: headings, metrics, report and service cards, empty states.
-- `src/components/dashboard` / `src/components/admin`: page assemblies.
-- `src/components/ui`: minimal design primitives; `components.json` supports later shadcn installation.
-- `src/data/preview.ts`: no real data.
+## Shared architecture
 
-Next phase: build full interaction-level frontend with feedback, forms, keyboard navigation, loading/error/empty states, and responsive QA.
+- `src/components/layout`: marketing header/footer, mode toggle, existing student/admin preview shell.
+- `src/components/shared`: headings, metric cards, issue/service cards and empty states.
+- `src/components/dashboard` / `src/components/admin`: Phase 0 preview assemblies, for later complete redesign.
+- `src/components/ui`: minimal design primitives, shadcn-compatible configuration.
+- `src/data/preview.ts`: sample data only, never authentic campus facts.
+
+### Checks
+
+`npm run typecheck`, `npm run lint`, `npm run build`, `node scripts/verify-scaffold.mjs`, `node scripts/smoke-phase1.mjs` (after building).
+
+`scripts/smoke-phase1.mjs` boots the production build, fetches all 8 routes and asserts a registration API cannot fake success.

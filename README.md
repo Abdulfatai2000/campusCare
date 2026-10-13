@@ -6,11 +6,11 @@ An independent, student-first platform prototype for campus issue reporting, tra
 
 > **Independent OAU-first concept.** CampusCare is not affiliated with or officially endorsed by Obafemi Awolowo University. Emergency contacts, offices, schedules and administration require separate verification/authorization before real-world use.
 
-## Phase 0 — scaffold status
+## Project status — Phase 0 foundation and Frontend Phase 1
 
 The repository contains **29 frontend route shells**, **32 API route handlers**, **10 Mongoose models**, reusable UI components, sample fixtures, validation/security boundaries, and technical documentation.
 
-The public website and student/admin preview routes render. All API routes except `/api/health` return **501 Not Implemented**. Authentication, issue submission, bookings, uploads, notifications, and privileged admin actions are not live.
+The four public pages and four authentication pages now have full Phase 1 responsive design, navigation, accessible form previews, themes, and motion. The student and admin workspaces remain Phase 0 previews. All API routes except `/api/health` return **501 Not Implemented**. Authentication, issue submission, bookings, uploads, notifications, and privileged admin actions are not live.
 
 ## Stack
 
@@ -37,6 +37,7 @@ npm run typecheck
 npm run lint
 npm run build
 node scripts/verify-scaffold.mjs
+node scripts/smoke-phase1.mjs # requires npm run build first
 ```
 
 CI runs all checks automatically on each push to `main`.
@@ -84,22 +85,20 @@ src/
   models/          10 Mongoose data schemas
   types/           Domain types
 docs/              Project, architecture, API, security, design and Git documentation
-scripts/           Scaffold structure verifier
+scripts/           Scaffold verifier and production-route smoke test
 ```
 
 ## Security notes
 
 No production administration is available. Preview screens must not be used to collect student records. Tenant access is intended to be enforced server-side from authenticated identity (not a client-supplied campusId). See `docs/AUTH_SECURITY.md`.
 
-## Roadmap
+## Frontend roadmap (four phases)
 
-- **Phase 1:** Complete polished frontend interactions, responsive experience, accessibility, and safe preview workflows.
-- **Phase 2:** Real authentication, database operations, role boundaries, report workflow.
-- **Phase 3:** Verified services, appointments, media, and notifications.
-- **Phase 4:** Security testing, production hardening, deployment and institutional onboarding.
+1. **Frontend Phase 1 — Completed:** branded Home, Features, About, Contact, Login, Signup, Forgot Password, Reset Password; responsive styling, contact email-draft flow, dark/light mode and page navigation.
+2. **Frontend Phase 2 — Next:** student dashboard, issue reporting, report tracking/details, campus services and service details.
+3. **Frontend Phase 3:** appointment calendar and request UI, emergency directory, notifications, profile and student settings.
+4. **Frontend Phase 4:** nine admin-portal views, frontend integration, accessibility and responsive QA.
 
-See `docs/DEVELOPMENT_PHASES.md` and `docs/GIT_WORKFLOW.md`.
+See [Phase 1 handoff](docs/FRONTEND_PHASE1.md), [frontend routes](docs/FRONTEND_STRUCTURE.md), and [Git workflow](docs/GIT_WORKFLOW.md).
 
-## Maintainer
-
-Built by Ojewande Abdulfatai Ayoye (codeWande).
+Backend implementation follows separately: secure Auth.js identity, MongoDB services, verified contacts, authorization and real workflows. Phase 1 UIs are not live services.
