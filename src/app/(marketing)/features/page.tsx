@@ -1,0 +1,7 @@
+import Link from "next/link";
+import { ClipboardList, CalendarDays, ShieldAlert, Building2, BellRing, BarChart3, ArrowRight } from "lucide-react";
+import { PageHeading } from "@/components/shared/page-heading";
+export default function FeaturesPage(){
+ const rows=[{icon:ClipboardList,title:"Issue reporting",desc:"A clear path to submitting campus concerns and seeing their progress."},{icon:CalendarDays,title:"Appointments",desc:"An organized route to requesting appointments with participating campus providers."},{icon:ShieldAlert,title:"Emergency directory",desc:"A dedicated space for verified safety and support information."},{icon:Building2,title:"Campus services",desc:"Help students discover who to contact for everyday requests."},{icon:BellRing,title:"Notifications",desc:"Keep students informed when a report or request changes."},{icon:BarChart3,title:"Administrative insights",desc:"Help authorized teams manage service demand and issue resolution."}];
+ return <div className="container marketing-section"><PageHeading eyebrow="01 / Features" title="Built around real campus needs." description="These are planned capabilities. The first release is an interactive structural preview, not a live student-services system."/><div className="card-grid">{rows.map(x=><article key={x.title} className="card"><x.icon color="var(--accent)" size={30}/><h3>{x.title}</h3><p>{x.desc}</p></article>)}</div><div style={{marginTop:38}}><Link className="button" href="/dashboard">Preview dashboard <ArrowRight size={16}/></Link></div></div>;
+}
