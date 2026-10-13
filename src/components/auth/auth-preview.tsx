@@ -26,12 +26,10 @@ export function AuthPreview({mode}:{mode:AuthMode}){
  const [confirmPassword,setConfirmPassword]=useState("");
  const [remember,setRemember]=useState(true);
  const [notice,setNotice]=useState("");
- const [touched,setTouched]=useState(false);
  const isLogin=mode==="login",isSignup=mode==="signup",isForgot=mode==="forgot-password",isReset=mode==="reset-password";
  const strength=password.length>=12&&/[A-Z]/.test(password)&&/[0-9]/.test(password)?"strong":password.length>=8?"developing":"start";
  function submit(event:FormEvent<HTMLFormElement>){
   event.preventDefault();
-  setTouched(true);
   if(isSignup&&name.trim().length<2){setNotice("Please enter your full name.");return}
   if((isSignup||isReset)&&password!==confirmPassword){setNotice("The passwords do not match.");return}
   if(!isForgot&&password.length<8){setNotice("Use at least 8 characters for this preview.");return}
