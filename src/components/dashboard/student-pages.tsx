@@ -6,11 +6,8 @@ import { AppointmentDraftForm } from "@/components/appointments/appointment-draf
 import { StudentDashboard } from "@/components/dashboard/student-dashboard";
 import { StudentIssueDetailView } from "@/components/issues/issue-detail-view";
 import { StudentServiceDetailView } from "@/components/services/service-detail-view";
-import { ArrowRight, Bell, CalendarClock, CalendarDays, ClipboardList, HeartHandshake, Info, MapPin, Plus, ShieldAlert, Wrench, Users } from "lucide-react";
+import { Bell, Info, ShieldAlert, Users } from "lucide-react";
 import { PageHeading } from "@/components/shared/page-heading";
-import { MetricCard } from "@/components/shared/metric-card";
-import { IssueCard } from "@/components/shared/issue-card";
-import { ServiceCard } from "@/components/shared/service-card";
 import { EmptyState } from "@/components/shared/empty-state";
 import { previewIssues, previewServices, previewAppointments, previewEmergencyContacts } from "@/data/preview";
 type StudentPage = "dashboard" | "report-issue" | "my-reports" | "services" | "appointments" | "appointments-new" | "emergency" | "notifications" | "profile" | "settings";
