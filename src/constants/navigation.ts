@@ -20,5 +20,6 @@ export const adminNavigation: NavEntry[] = [
   {label:"Emergency contacts",href:"/admin/emergency-contacts",icon:ShieldAlert},
   {label:"Users",href:"/admin/users",icon:UsersRound},
   {label:"Analytics",href:"/admin/analytics",icon:ChartNoAxesCombined},
+  {label:"Notifications",href:"/admin/notifications",icon:Bell},
   {label:"Settings",href:"/admin/settings",icon:Settings2},
 ];
