@@ -7,6 +7,7 @@ import { AppointmentDirectory } from "@/components/appointments/appointment-dire
 import { EmergencyDirectory } from "@/components/emergency/emergency-directory";
 import { NotificationPreview } from "@/components/notifications/notification-preview";
 import { ProfilePreview } from "@/components/profile/profile-preview";
+import { StudentSettings } from "@/components/settings/student-settings";
 import { StudentDashboard } from "@/components/dashboard/student-dashboard";
 import { StudentIssueDetailView } from "@/components/issues/issue-detail-view";
 import { StudentServiceDetailView } from "@/components/services/service-detail-view";
@@ -40,7 +41,7 @@ export function StudentPreviewPage({page}:{page:StudentPage}){
  {page==="emergency"&&<EmergencyDirectory/>}
  {page==="notifications"&&<NotificationPreview/>}
  {page==="profile"&&<ProfilePreview/>}
- {page==="settings"&&<div className="card-grid"><div className="card"><Info color="var(--accent)" size={25}/><h3>Appearance</h3><p>Use the theme switch in the top bar to toggle dark and light themes. Your selection is saved on this device.</p></div><div className="card"><Bell color="var(--accent)" size={25}/><h3>Notifications</h3><p>Notification preferences will be available once real accounts are enabled.</p></div><div className="card"><Users color="var(--accent)" size={25}/><h3>Privacy</h3><p>Privacy controls and account export will be designed before real student data is collected.</p></div></div>}
+ {page==="settings"&&<StudentSettings/>}
  </>;
 }
 export function StudentIssueDetail({id}:{id:string}){return <StudentIssueDetailView id={id}/>;}
