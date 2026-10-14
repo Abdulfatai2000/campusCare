@@ -3,6 +3,7 @@ import { IssueDraftForm } from "@/components/issues/issue-draft-form";
 import { IssueDirectory } from "@/components/issues/issue-directory";
 import { ServiceDirectory } from "@/components/services/service-directory";
 import { AppointmentDraftForm } from "@/components/appointments/appointment-draft-form";
+import { AppointmentDirectory } from "@/components/appointments/appointment-directory";
 import { StudentDashboard } from "@/components/dashboard/student-dashboard";
 import { StudentIssueDetailView } from "@/components/issues/issue-detail-view";
 import { StudentServiceDetailView } from "@/components/services/service-detail-view";
@@ -31,7 +32,7 @@ export function StudentPreviewPage({page}:{page:StudentPage}){
  {page==="report-issue"&&<IssueDraftForm/>}
  {page==="my-reports"&&<IssueDirectory/>}
  {page==="services"&&<ServiceDirectory/>}
- {page==="appointments"&&<><div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:18,flexWrap:"wrap",gap:12}}><p className="small muted">Example appointments (not real bookings).</p><Link href="/appointments/new" className="button">Request appointment <Plus size={15}/></Link></div><div className="preview-list">{previewAppointments.map(x=><div className="preview-item" key={x.id}><div><strong>{x.service}</strong><p>{x.date}</p></div><span className="status">{x.status}</span></div>)}</div></>}
+ {page==="appointments"&&<AppointmentDirectory/>}
  {page==="appointments-new"&&<AppointmentDraftForm/>}
  {page==="emergency"&&<><div className="notice" style={{marginBottom:22,borderColor:"#e5ac5c"}}><ShieldAlert size={15} style={{display:"inline",verticalAlign:"middle",marginRight:7}}/>Emergency numbers on this page are intentionally not populated until verified. For immediate help, contact the appropriate official emergency services available in your area.</div><div className="card-grid">{previewEmergencyContacts.map(c=><article className="card" key={c.label}><ShieldAlert color="var(--accent)" size={28}/><h3>{c.label}</h3><p>{c.detail}</p><span className="eyebrow" style={{display:"block",marginTop:24}}>AWAITING VERIFICATION</span></article>)}</div></>}
  {page==="notifications"&&<EmptyState title="Nothing here yet." description="When real accounts and server notifications are implemented, relevant updates will appear here." action={<Bell color="var(--accent)" size={27}/>}/>}
