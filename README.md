@@ -45,7 +45,7 @@ npx playwright install chromium
 npm run test:admin
 ```
 
-CI runs all checks automatically on each push to `main`.
+CI runs all checks automatically on each push to `main`. Marketing V2 adds `npm run smoke:marketing` for public links/content and `npm run test:e2e` for the combined marketing/admin browser suite. See [Marketing V2](docs/MARKETING_V2.md) for the public architecture, visual system, accessibility and preview boundaries.
 
 ## Main routes
 
