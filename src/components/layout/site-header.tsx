@@ -22,7 +22,7 @@ export function SiteHeader(){
   <nav className="site-nav p1-site-nav" aria-label="Main navigation">{nav.map(x=><Link key={x.href} href={x.href} className={pathname===x.href?"nav-current":""} aria-current={pathname===x.href?"page":undefined}>{x.label}</Link>)}</nav>
   <div className="p1-header-tools">
    <div ref={searchRef} className="p1-search" onBlur={event=>{if(!searchRef.current?.contains(event.relatedTarget)){setFocused(false)}}}>
-    <Search size={16} aria-hidden="true"/><input aria-label="Search CampusCare pages" value={query} onChange={e=>{setQuery(e.target.value);setFocused(true)}} onFocus={()=>setFocused(true)} onKeyDown={event=>{if(event.key==="Enter"&&suggestions.length){event.preventDefault();router.push(suggestions[0].href);setQuery("");setFocused(false)}}} type="search" placeholder="Find campus services..." aria-describedby="campuscare-search-help"/>
+    <Search size={16} aria-hidden="true"/><input aria-label="Search CampusCare pages" value={query} onChange={e=>{setQuery(e.target.value);setFocused(true)}} onFocus={()=>setFocused(true)} onKeyDown={event=>{if(event.key==="Enter"&&suggestions.length){event.preventDefault();router.push(suggestions[0].href);setQuery("");setFocused(false)}}} type="search" placeholder="Find a CampusCare page..." aria-describedby="campuscare-search-help"/>
     <span className="sr-only" id="campuscare-search-help">Type to find pages, press Enter to open the first match, or Tab to a suggestion.</span>
     {focused&&query.trim().length>0&&<div className="p1-search-results" id="campuscare-search-results" role="region" aria-label="Suggested CampusCare pages">{suggestions.length?suggestions.map(x=><Link key={x.href} href={x.href} onClick={()=>{setFocused(false);setQuery("")}}><x.icon size={16}/>{x.label}<ArrowRight size={14}/></Link>):<p>No matching pages. Try “services” or “emergency”.</p>}</div>}
    </div>
@@ -31,6 +31,6 @@ export function SiteHeader(){
    <button className="p1-mobile-trigger" type="button" onClick={()=>setMenu(x=>!x)} aria-label={menu?"Close navigation":"Open navigation"} aria-expanded={menu} aria-controls="campuscare-mobile-navigation">{menu?<X size={22}/>:<Menu size={22}/>}</button>
   </div>
  </div>
- {menu&&<div className="p1-mobile-nav" id="campuscare-mobile-navigation"><nav aria-label="Mobile main navigation">{nav.map(x=><Link key={x.href} href={x.href}><x.icon size={18}/>{x.label}<ArrowRight size={15}/></Link>)}<Link href="/features"><Info size={18}/>Features<ArrowRight size={15}/></Link><Link href="/contact"><Mail size={18}/>Contact<ArrowRight size={15}/></Link><Link href="/auth/login">Log in<ArrowRight size={15}/></Link><Link href="/auth/signup" className="mobile-primary">Create an account<ArrowRight size={15}/></Link></nav></div>}
+ <div className="p1-mobile-nav" id="campuscare-mobile-navigation" hidden={!menu}><nav aria-label="Mobile main navigation">{nav.map(x=><Link key={x.href} href={x.href}><x.icon size={18}/>{x.label}<ArrowRight size={15}/></Link>)}<Link href="/features"><Info size={18}/>Features<ArrowRight size={15}/></Link><Link href="/contact"><Mail size={18}/>Contact<ArrowRight size={15}/></Link><Link href="/auth/login">Log in<ArrowRight size={15}/></Link><Link href="/auth/signup" className="mobile-primary">Create an account<ArrowRight size={15}/></Link></nav></div>
  </header>;
 }
