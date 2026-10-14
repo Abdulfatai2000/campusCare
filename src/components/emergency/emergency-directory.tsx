@@ -1,0 +1,9 @@
+import { AlertTriangle, HeartPulse, ShieldAlert, PhoneOff, ExternalLink } from "lucide-react";
+import { previewEmergencyContacts } from "@/data/preview";
+export function EmergencyDirectory(){
+ return <section>
+  <div className="notice" role="alert" style={{marginBottom:22,borderColor:"#b8894a",padding:18}}><AlertTriangle size={19} style={{display:"inline",verticalAlign:"middle",marginRight:9}}/><strong>Important:</strong> CampusCare is not an emergency-response service and is not affiliated with OAU. If you need urgent assistance, use your area's officially verified emergency services or seek in-person help immediately.</div>
+  <div className="card-grid">{previewEmergencyContacts.map((contact,index)=><article className="card" key={contact.label}>{index===1?<HeartPulse size={29} color="var(--accent)"/>:<ShieldAlert size={29} color="var(--accent)"/>}<h3>{contact.label}</h3><p>{contact.detail}</p><span className="eyebrow" style={{display:"flex",alignItems:"center",gap:8,marginTop:22}}><PhoneOff size={14}/> NUMBER NOT VERIFIED</span></article>)}</div>
+  <div className="surface" style={{padding:25,marginTop:24}}><h2 style={{fontSize:23,marginTop:0}}>What to do in an emergency</h2><ol style={{color:"var(--muted)",paddingLeft:22,display:"grid",gap:10}}><li>Move to a safer place if you can do so without increasing risk.</li><li>Contact verified local emergency services or nearby campus security in person.</li><li>Share your exact location and the nature of the emergency with responders.</li><li>Follow official responder instructions; do not rely on this prototype for dispatch.</li></ol><p className="small muted"><ExternalLink size={14} style={{display:"inline",verticalAlign:"middle",marginRight:6}}/>Verified institutional contacts will only be published after confirmation.</p></div>
+ </section>;
+}
