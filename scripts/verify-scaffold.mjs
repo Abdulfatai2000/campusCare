@@ -1,12 +1,12 @@
 import assert from "node:assert/strict";
 import { readdirSync, readFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
-const walk=(root)=>readdirSync(root,{withFileTypes:true}).flatMap(x=>x.isDirectory()?walk(join(root,x.name)):[join(root,x.name)]);
+const walk=(root)=>readdirSync(root,{withFileTypes:true}).flatMap(x=>x.isDirectory()?walk(join(root,x.name)):[join(root,x.name).replaceAll("\\", "/")]);
 const files=walk("src/app");
 const pages=files.filter(p=>p.endsWith("/page.tsx"));
 const api=files.filter(p=>p.startsWith("src/app/api/")&&p.endsWith("/route.ts"));
 const models=walk("src/models").filter(p=>p.endsWith(".ts")&&!p.endsWith("/index.ts"));
-assert.equal(pages.length,29,"Expected 29 frontend pages");
+assert.equal(pages.length,30,"Expected 30 frontend pages, including the admin inbox");
 assert.equal(api.length,32,"Expected 32 backend routes");
 assert.equal(models.length,10,"Expected 10 data models");
 assert.ok(existsSync("src/app/(marketing)/page.tsx"));
