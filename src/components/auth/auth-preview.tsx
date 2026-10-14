@@ -1,5 +1,5 @@
 "use client";
-import { useState,type FormEvent } from "react";
+import { useId,useState,type FormEvent } from "react";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, Check, CircleHelp, Eye, EyeOff, GraduationCap, Info, Lock, Mail, ShieldCheck, Sparkles, UserRound, type LucideIcon } from "lucide-react";
 import { CampusScene } from "@/components/marketing/campus-scene";
@@ -15,7 +15,8 @@ function Field({label,icon:Icon,children,hint}:{label:string;icon:LucideIcon;chi
 }
 function PasswordInput({label,value,onChange,autoComplete="new-password",placeholder="Enter your password"}:{label:string;value:string;onChange:(v:string)=>void;autoComplete?:string;placeholder?:string}){
  const [visible,setVisible]=useState(false);
- return <div className="p1-auth-password-wrap"><span className="p1-auth-label">{label}</span><div className="p1-auth-input-shell"><Lock size={18} aria-hidden="true"/><input required minLength={8} maxLength={128} type={visible?"text":"password"} placeholder={placeholder} value={value} onChange={e=>onChange(e.target.value)} autoComplete={autoComplete}/><button type="button" className="p1-password-toggle" aria-label={visible?"Hide password":"Show password"} onClick={()=>setVisible(v=>!v)}>{visible?<EyeOff size={18}/>:<Eye size={18}/>}</button></div></div>;
+ const inputId=useId();
+ return <div className="p1-auth-password-wrap"><label htmlFor={inputId} className="p1-auth-label">{label}</label><div className="p1-auth-input-shell"><Lock size={18} aria-hidden="true"/><input id={inputId} required minLength={8} maxLength={128} type={visible?"text":"password"} placeholder={placeholder} value={value} onChange={e=>onChange(e.target.value)} autoComplete={autoComplete}/><button type="button" className="p1-password-toggle" aria-label={visible?"Hide password":"Show password"} onClick={()=>setVisible(v=>!v)}>{visible?<EyeOff size={18}/>:<Eye size={18}/>}</button></div></div>;
 }
 const roles=[{icon:ShieldCheck,title:"Report issues",detail:"Give everyday campus concerns a clearer path."},{icon:GraduationCap,title:"Discover services",detail:"Know where to look for the support you need."},{icon:Sparkles,title:"Build a better experience",detail:"Thoughtful tools for a connected community."}];
 export function AuthPreview({mode}:{mode:AuthMode}){
