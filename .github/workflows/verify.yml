@@ -27,3 +27,5 @@ jobs:
         run: node scripts/smoke-phase1.mjs
       - name: Smoke-test Phase 2 student pages
         run: node scripts/smoke-phase2.mjs
+      - name: Verify Phase 3 student features
+        run: node scripts/smoke-phase3.mjs
