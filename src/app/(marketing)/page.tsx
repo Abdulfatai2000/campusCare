@@ -1,3 +1,4 @@
+import { StudentBenefits } from "@/components/marketing/student-benefits";
 import { HowItWorks } from "@/components/marketing/how-it-works";
 import { FeatureShowcase } from "@/components/marketing/feature-showcase";
 import { SolutionSection } from "@/components/marketing/solution-section";
@@ -6,5 +7,5 @@ import type { Metadata } from "next";
 import { LandingHero } from "@/components/marketing/landing-hero";
 export const metadata: Metadata = { title: "A better connected campus experience", description: "Discover CampusCare, an independent student-support concept connecting issue reporting, services, appointments and clearer communication. Explore the frontend preview." };
 export default function HomePage() {
-  return <><LandingHero /><ProblemSection /><SolutionSection /><FeatureShowcase /><HowItWorks />{/* landing sections */}</>;
+  return <><LandingHero /><ProblemSection /><SolutionSection /><FeatureShowcase /><HowItWorks /><StudentBenefits />{/* landing sections */}</>;
 }
