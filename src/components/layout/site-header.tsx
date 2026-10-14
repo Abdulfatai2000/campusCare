@@ -1,20 +1,10 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ArrowRight, Menu, X, ClipboardCheck, Building2, ShieldAlert, House, Info, Mail, type LucideIcon } from "lucide-react";
+import { ArrowRight, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
-type NavLink = { label: string; href: string; icon: LucideIcon };
-const nav: NavLink[] = [
-  { label: "Home", href: "/", icon: House },
-  { label: "Services", href: "/services", icon: Building2 },
-  { label: "Report an issue", href: "/report-issue", icon: ClipboardCheck },
-  { label: "About", href: "/about", icon: Info },
-];
-const mobileExtras: NavLink[] = [
-  { label: "Emergency guidance", href: "/emergency", icon: ShieldAlert },
-  { label: "Contact", href: "/contact", icon: Mail },
-];
+import { marketingNavigation as nav } from "@/constants/marketing-navigation";
 
 function CampusCareMark() {
   return (
@@ -58,9 +48,9 @@ export function SiteHeader() {
       </div>
       <div className="p1-mobile-nav" id="campuscare-mobile-navigation" hidden={!menu}>
         <nav aria-label="Mobile main navigation">
-          {[...nav, ...mobileExtras].map(item => (
+          {nav.map(item => (
             <Link key={item.href} href={item.href} aria-current={pathname === item.href ? "page" : undefined}>
-              <item.icon size={18} aria-hidden="true" />{item.label}<ArrowRight size={15} aria-hidden="true" />
+              {item.label}<ArrowRight size={15} aria-hidden="true" />
             </Link>
           ))}
           <Link href="/auth/login">Log in<ArrowRight size={15} aria-hidden="true" /></Link>

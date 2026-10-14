@@ -10,7 +10,7 @@ const root = readFileSync("src/app/layout.tsx","utf8");
 assert.ok(root.includes('"./phase1.css"') && root.includes('"./phase1-auth.css"'),"Phase 1 stylesheets must be imported");
 const header = readFileSync("src/components/layout/site-header.tsx","utf8");
 assert.ok(header.includes('id="campuscare-mobile-navigation"') && header.includes("hidden={!menu}"),"Mobile disclosure target must remain mounted and hidden when closed");
-assert.ok(header.includes('placeholder="Find a CampusCare page..."'),"Search must describe its actual page-navigation behavior");
+assert.ok(!header.includes('type="search"'),"Public navigation should not contain a search input");
 const contact = readFileSync("src/components/marketing/contact-form.tsx","utf8");
 assert.ok(contact.includes('aria-label="Prepare an email to CampusCare"'),"Contact form should announce its email-draft purpose");
 assert.ok(contact.includes('minLength={2}'),"Contact form should validate name length");
