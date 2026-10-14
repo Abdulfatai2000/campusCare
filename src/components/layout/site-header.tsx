@@ -1,51 +1,34 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ArrowRight, Menu, X } from "lucide-react";
-import { useEffect, useState } from "react";
-
-import { marketingNavigation as nav } from "@/constants/marketing-navigation";
-
+import { useEffect, useRef, useState } from "react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
+import { marketingNavigation } from "@/constants/marketing-navigation";
 import { CampusCareBrand } from "@/components/marketing/brand";
 
 export function SiteHeader() {
   const pathname = usePathname();
-  const [menu, setMenu] = useState(false);
-  useEffect(() => { setMenu(false); }, [pathname]);
+  const [open, setOpen] = useState(false);
+  const [hash, setHash] = useState("");
+  const dialog = useRef<HTMLDialogElement>(null);
+  const trigger = useRef<HTMLButtonElement>(null);
   useEffect(() => {
-    const onKey = (event: KeyboardEvent) => { if (event.key === "Escape") setMenu(false); };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, []);
-
-  return (
-    <header className="site-header p1-site-header">
-      <div className="container header-inner">
-        <CampusCareBrand />
-        <nav className="site-nav p1-site-nav" aria-label="Main navigation">
-          {nav.map(item => (
-            <Link key={item.href} href={item.href} className={pathname === item.href ? "nav-current" : ""} aria-current={pathname === item.href ? "page" : undefined}>{item.label}</Link>
-          ))}
-        </nav>
-        <div className="p1-header-tools">
-          <Link className="p1-login-link" href="/auth/login">Log in</Link>
-          <Link className="button p1-button p1-header-cta" href="/auth/signup">Get started <ArrowRight size={16} aria-hidden="true" /></Link>
-          <button className="p1-mobile-trigger" type="button" onClick={() => setMenu(open => !open)} aria-label={menu ? "Close navigation" : "Open navigation"} aria-expanded={menu} aria-controls="campuscare-mobile-navigation">
-            {menu ? <X size={22} /> : <Menu size={22} />}
-          </button>
-        </div>
-      </div>
-      <div className="p1-mobile-nav" id="campuscare-mobile-navigation" hidden={!menu}>
-        <nav aria-label="Mobile main navigation">
-          {nav.map(item => (
-            <Link key={item.href} href={item.href} aria-current={pathname === item.href ? "page" : undefined}>
-              {item.label}<ArrowRight size={15} aria-hidden="true" />
-            </Link>
-          ))}
-          <Link href="/auth/login">Log in<ArrowRight size={15} aria-hidden="true" /></Link>
-          <Link href="/auth/signup" className="mobile-primary">Get started<ArrowRight size={15} aria-hidden="true" /></Link>
-        </nav>
-      </div>
-    </header>
-  );
+    const sync = () => setHash(window.location.hash);
+    sync(); window.addEventListener("hashchange", sync);
+    return () => window.removeEventListener("hashchange", sync);
+  }, [pathname]);
+  useEffect(() => {
+    if (!open) return;
+    const modal = dialog.current;
+    const previousOverflow = document.body.style.overflow;
+    modal?.showModal(); document.body.style.overflow = "hidden";
+    const media = window.matchMedia("(min-width: 961px)");
+    const resize = () => { if (media.matches) setOpen(false); };
+    media.addEventListener("change", resize);
+    const button = trigger.current;
+    return () => { modal?.close(); document.body.style.overflow = previousOverflow; media.removeEventListener("change", resize); button?.focus(); };
+  }, [open]);
+  const current = (href: string) => href.includes("#") ? pathname === "/" && hash === "#how-it-works" : pathname === href && !(href === "/" && hash === "#how-it-works");
+  const links = marketingNavigation.map(item => <Link href={item.href} key={item.href} aria-current={current(item.href) ? item.href.includes("#") ? "location" : "page" : undefined} onClick={() => { setOpen(false); setHash(item.href.includes("#") ? "#how-it-works" : ""); }}>{item.label}</Link>);
+  return <header className="cc-header"><div className="cc-container cc-header-inner"><CampusCareBrand/><nav className="cc-nav" aria-label="Main navigation">{links}</nav><div className="cc-header-actions"><Link className="cc-header-login" href="/auth/login">Log in</Link><Link className="cc-button" href="/auth/signup">Get started <ArrowUpRight size={15} aria-hidden="true"/></Link><button ref={trigger} className="cc-menu-button" aria-label="Open navigation" aria-expanded={open} aria-controls="campuscare-mobile-navigation" onClick={() => setOpen(true)}><Menu size={21}/></button></div></div><dialog ref={dialog} id="campuscare-mobile-navigation" className="cc-drawer" aria-label="Mobile navigation" onCancel={() => setOpen(false)} onClick={event => { if (event.target === event.currentTarget && event.clientX < event.currentTarget.getBoundingClientRect().left) setOpen(false); }}><div className="cc-drawer-head"><span className="cc-label">Explore CampusCare</span><button className="cc-menu-button" aria-label="Close navigation" onClick={() => setOpen(false)}><X size={21}/></button></div><nav aria-label="Mobile main navigation">{links}</nav><div className="cc-actions"><Link href="/auth/login" className="cc-button cc-button-secondary" onClick={() => setOpen(false)}>Log in</Link><Link href="/auth/signup" className="cc-button" onClick={() => setOpen(false)}>Get started <ArrowUpRight size={17}/></Link></div><p className="cc-drawer-note">Independent project. Account creation and sign-in are not live yet.</p></dialog></header>;
 }

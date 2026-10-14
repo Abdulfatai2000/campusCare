@@ -9,7 +9,7 @@ for (const f of requiredFiles) assert.ok(existsSync(f), "Missing Phase 1 file: "
 const root = readFileSync("src/app/layout.tsx","utf8");
 assert.ok(root.includes('"./phase1.css"') && root.includes('"./phase1-auth.css"'),"Phase 1 stylesheets must be imported");
 const header = readFileSync("src/components/layout/site-header.tsx","utf8");
-assert.ok(header.includes('id="campuscare-mobile-navigation"') && header.includes("hidden={!menu}"),"Mobile disclosure target must remain mounted and hidden when closed");
+assert.ok(header.includes('id="campuscare-mobile-navigation"') && header.includes("showModal()"),"Mobile navigation must use a mounted accessible modal dialog");
 assert.ok(!header.includes('type="search"'),"Public navigation should not contain a search input");
 const contact = readFileSync("src/components/marketing/contact-form.tsx","utf8");
 assert.ok(contact.includes('aria-label="Prepare an email to CampusCare"'),"Contact form should announce its email-draft purpose");
