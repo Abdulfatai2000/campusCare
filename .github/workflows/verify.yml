@@ -31,14 +31,16 @@ jobs:
         run: node scripts/smoke-phase3.mjs
       - name: Smoke-test Phase 4 admin routes and API boundaries
         run: node scripts/smoke-phase4.mjs
-      - name: Install Chromium for admin browser tests
+      - name: Smoke-test public marketing content and links
+        run: npm run smoke:marketing
+      - name: Install Chromium for browser tests
         run: npx playwright install --with-deps chromium
-      - name: Verify admin interactions and mobile layouts
-        run: npm run test:admin
+      - name: Verify marketing and admin desktop/mobile experiences
+        run: npm run test:e2e
       - name: Upload browser failure traces
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: admin-browser-traces
+          name: browser-traces
           path: test-results/
           retention-days: 7
