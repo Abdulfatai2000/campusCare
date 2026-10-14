@@ -219,3 +219,21 @@
 @media(max-width:1000px){.p1-site-nav{display:none}.p1-mobile-trigger{display:flex}.p1-hero-grid{grid-template-columns:1fr}.p1-hero-copy{max-width:760px}.p1-hero-showcase{min-height:450px}.p1-preview-wrap{max-width:640px;margin:auto}.p1-hero-landscape{inset:-15px 0}.p1-feature-ribbon{grid-template-columns:repeat(2,minmax(0,1fr))}.p1-how{grid-template-columns:1fr;gap:20px}.p1-feature-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.p1-contact-grid{gap:30px}.p1-values-top{display:block}}
 @media(max-width:760px){.p1-site-header .header-inner{width:calc(100% - 32px)}.p1-site-header .p1-header-cta,.p1-login-link{display:none}.p1-hero-grid,.p1-feature-ribbon{width:calc(100% - 32px)}.p1-home-hero{padding-top:36px}.p1-hero-copy h1{font-size:clamp(42px,10vw,64px);letter-spacing:-2.8px}.p1-hero-showcase{min-height:370px}.p1-hero-landscape{inset:-10px}.p1-preview-wrap{width:100%;max-width:570px}.product-preview{transform:none;min-height:360px}.preview-side{display:none}.product-preview{grid-template-columns:1fr}.preview-greeting{margin:18px 0}.p1-feature-ribbon{grid-template-columns:1fr 1fr}.p1-feature-tile{min-height:205px}.p1-values-grid,.p1-feature-grid,.p1-feature-ethos,.p1-contact-prompts{grid-template-columns:1fr}.p1-section{padding:60px 0}.p1-steps{grid-template-columns:1fr;gap:0}.p1-step{padding:8px 0 17px}.p1-step-arrow{display:none}.p1-values-zone{padding:60px 0}.p1-join{display:grid;gap:12px;padding:25px}.page-banner{grid-template-columns:1fr;min-height:0;padding:55px 0 20px}.page-banner h1{font-size:clamp(38px,8vw,57px);letter-spacing:-2px}.page-banner-visual{min-height:180px}.banner-scene{inset:-25px 0;width:100%}.p1-about-story,.p1-about-vision,.p1-contact-grid{grid-template-columns:1fr}.p1-about-vision{padding:30px}.p1-vision-emblem{display:none}.p1-footer-banner{flex-wrap:wrap}.p1-footer-banner>div:nth-child(2){flex-basis:calc(100% - 85px)}.p1-footer-cols{grid-template-columns:repeat(2,minmax(0,1fr));gap:27px}.p1-footer-brand{grid-column:1/-1}.p1-footer-connect{grid-column:1/-1}.p1-footer-bottom{flex-wrap:wrap}}
 @media(max-width:500px){.p1-logo{font-size:22px}.p1-hero-copy h1{font-size:clamp(37px,10vw,49px)}.p1-hero-showcase{min-height:350px}.preview-main{padding:13px}.preview-action{padding:8px;min-height:78px}.preview-action b{font-size:8px}.preview-action span{font-size:7.5px}.preview-action-icon{padding:5px}.p1-feature-ribbon{grid-template-columns:1fr}.p1-feature-tile{min-height:167px;padding:21px}.p1-footer-banner>div:nth-child(2){flex-basis:100%}.p1-footer-cols{grid-template-columns:1fr 1fr}.p1-footer-connect{grid-column:1/-1}.p1-form-row{grid-template-columns:1fr;gap:0}.p1-contact-form{padding:22px}.p1-hero-social{align-items:flex-start}}
+
+
+/* Refined marketing navigation: keep the identity visible and actions focused. */
+.p1-site-header .header-inner{width:min(1240px,calc(100% - 48px));gap:28px}
+.p1-brand{display:inline-flex;align-items:center;gap:11px;flex-shrink:0;line-height:1}
+.p1-brand-mark{display:block;flex-shrink:0;filter:drop-shadow(0 4px 12px #c8fa7820)}
+.p1-brand-name{font-size:22px;letter-spacing:-1.1px;color:var(--foreground)}
+.p1-brand-name>span:first-child{color:var(--accent)}
+.p1-brand-name .p1-brand-period{color:var(--accent)}
+.p1-site-nav{gap:32px}
+.p1-header-tools{gap:12px}
+.p1-login-link{border:0;padding:10px 8px;background:transparent}
+.p1-login-link:hover{color:var(--accent)}
+.p1-header-cta{padding-inline:22px}
+.p1-mobile-nav a[aria-current="page"]{color:var(--accent);background:var(--surface-2)}
+@media(max-width:950px){.p1-site-nav{gap:17px}.p1-site-header .header-inner{gap:16px}}
+@media(max-width:760px){.p1-site-header .header-inner{width:calc(100% - 32px)}.p1-site-nav{display:none}.p1-mobile-trigger{display:inline-flex}.p1-brand-name{font-size:20px}}
+@media(max-width:460px){.p1-brand-mark{width:34px;height:34px}.p1-brand-name{font-size:18px}.p1-header-cta{padding:10px 13px}.p1-login-link{display:none}.p1-header-tools{gap:7px}}
