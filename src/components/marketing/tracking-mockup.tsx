@@ -1,2 +1,43 @@
 import { MockupFrame } from "./workspace-mockup";
-export function TrackingMockup(){return <MockupFrame title="report progress"><div className="cc-mockup-greeting"><div><span className="cc-note">EXAMPLE REPORT / DEMO-CC-001</span><h3>Study hall lighting</h3><p>Fictional facilities concern · example location</p></div></div><span className="cc-mockup-status">In progress · illustrative</span><ol className="cc-preview-timeline">{[{title:"Request received",detail:"The example concern has a clear starting point."},{title:"Reviewed with context",detail:"An illustrative team reviews the sample details."},{title:"Work in progress",detail:"The sample status makes the current step visible."},{title:"Resolution update",detail:"A future genuine update would close the loop."}].map((item,index)=><li key={item.title} data-future={index===3}><span>0{index+1}</span><div><strong>{item.title}</strong><p>{item.detail}</p></div></li>)}</ol></MockupFrame>;}
+export function TrackingMockup() {
+  return (
+    <MockupFrame title="report progress">
+      <div className="cc-mockup-greeting">
+        <div>
+          <span className="cc-note">EXAMPLE REPORT / DEMO-CC-001</span>
+          <h3>Study hall lighting</h3>
+          <p>Fictional facilities concern · example location</p>
+        </div>
+      </div>
+      <span className="cc-mockup-status">In progress · illustrative</span>
+      <ol className="cc-preview-timeline">
+        {[
+          {
+            title: "Request received",
+            detail: "The example concern has a clear starting point.",
+          },
+          {
+            title: "Reviewed with context",
+            detail: "An illustrative team reviews the sample details.",
+          },
+          {
+            title: "Work in progress",
+            detail: "The sample status makes the current step visible.",
+          },
+          {
+            title: "Resolution update",
+            detail: "A future genuine update would close the loop.",
+          },
+        ].map((item, index) => (
+          <li key={item.title} data-future={index === 3}>
+            <span>0{index + 1}</span>
+            <div>
+              <strong>{item.title}</strong>
+              <p>{item.detail}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </MockupFrame>
+  );
+}

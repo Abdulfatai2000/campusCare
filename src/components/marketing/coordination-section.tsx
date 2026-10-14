@@ -1,3 +1,47 @@
 import { AdminMockup } from "./admin-mockup";
 import { Reveal } from "./reveal";
-export function CoordinationSection(){return <section id="for-teams" className="cc-section"><div className="cc-container cc-split"><Reveal><p className="cc-label">06 / Care takes coordination</p><h2 className="cc-title">Behind every request,<br/>there are people.</h2><p className="cc-lede">Better student experiences also need better tools for the teams responding. CampusCare explores a shared view of requests, responsibilities and next steps.</p><ul className="cc-value-list"><li><strong>See the queue</strong><span>Organize incoming concerns by category, priority and status.</span></li><li><strong>Give it an owner</strong><span>Preview assignment to the team best placed to help.</span></li><li><strong>Close the loop</strong><span>Keep progress and context together throughout the journey.</span></li></ul><p className="cc-note">CONCEPT ONLY · No real university staff are using this sample workspace. Authorization and audit trails require backend integration.</p></Reveal><AdminMockup/></div></section>;}
+export function CoordinationSection() {
+  return (
+    <section id="for-teams" className="cc-section">
+      <div className="cc-container cc-split">
+        <Reveal>
+          <p className="cc-label">06 / Care takes coordination</p>
+          <h2 className="cc-title">
+            Behind every request,
+            <br />
+            there are people.
+          </h2>
+          <p className="cc-lede">
+            Better student experiences also need better tools for the teams
+            responding. CampusCare explores a shared view of requests,
+            responsibilities and next steps.
+          </p>
+          <ul className="cc-value-list">
+            <li>
+              <strong>See the queue</strong>
+              <span>
+                Organize incoming concerns by category, priority and status.
+              </span>
+            </li>
+            <li>
+              <strong>Give it an owner</strong>
+              <span>Preview assignment to the team best placed to help.</span>
+            </li>
+            <li>
+              <strong>Close the loop</strong>
+              <span>
+                Keep progress and context together throughout the journey.
+              </span>
+            </li>
+          </ul>
+          <p className="cc-note">
+            CONCEPT ONLY · No real university staff are using this sample
+            workspace. Authorization and audit trails require backend
+            integration.
+          </p>
+        </Reveal>
+        <AdminMockup />
+      </div>
+    </section>
+  );
+}

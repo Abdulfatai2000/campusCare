@@ -2,7 +2,86 @@ import Link from "next/link";
 import { Github, ArrowUpRight } from "lucide-react";
 import { CampusCareBrand } from "@/components/marketing/brand";
 import { ThemeToggle } from "./theme-toggle";
-export function SiteFooter(){
- const columns=[{title:"Discover",links:[["Home","/"],["Features","/features"],["How It Works","/#how-it-works"],["Product tour","/#product-tour"]]},{title:"The project",links:[["About","/about"],["Contact","/contact"],["Questions & answers","/#faq"],["Privacy & accessibility","/#trust"]]},{title:"Your next step",links:[["Log in","/auth/login"],["Sign up","/auth/signup"]]}];
- return <footer className="cc-footer"><div className="cc-container"><div className="cc-footer-grid"><div className="cc-footer-brand"><CampusCareBrand/><p>A little more clarity.<br/>A little more connection.<br/>A little more care.</p><a href="https://github.com/Abdulfatai2000/campusCare" className="cc-footer-source" target="_blank" rel="noopener noreferrer"><Github size={16}/> Follow the project <ArrowUpRight size={14}/><span className="sr-only"> (opens in a new tab)</span></a></div>{columns.map(column=><div key={column.title}><h2>{column.title}</h2><nav aria-label={column.title}>{column.links.map(([label,href])=><Link href={href} key={href}>{label}</Link>)}</nav></div>)}</div><div className="cc-footer-status"><span className="cc-pill">IN DEVELOPMENT / FRONTEND PREVIEW</span><p>No live submissions, bookings or account access. CampusCare is an independent OAU-first concept, not affiliated with or endorsed by any university.</p></div><div className="cc-footer-bottom"><span>© {new Date().getFullYear()} CampusCare. Built with intention.</span><div><span>Make yourself comfortable</span><ThemeToggle/></div></div></div></footer>;
+export function SiteFooter() {
+  const columns = [
+    {
+      title: "Discover",
+      links: [
+        ["Home", "/"],
+        ["Features", "/features"],
+        ["How It Works", "/#how-it-works"],
+        ["Product tour", "/#product-tour"],
+      ],
+    },
+    {
+      title: "The project",
+      links: [
+        ["About", "/about"],
+        ["Contact", "/contact"],
+        ["Questions & answers", "/#faq"],
+        ["Privacy & accessibility", "/#trust"],
+      ],
+    },
+    {
+      title: "Your next step",
+      links: [
+        ["Log in", "/auth/login"],
+        ["Sign up", "/auth/signup"],
+      ],
+    },
+  ];
+  return (
+    <footer className="cc-footer">
+      <div className="cc-container">
+        <div className="cc-footer-grid">
+          <div className="cc-footer-brand">
+            <CampusCareBrand />
+            <p>
+              A little more clarity.
+              <br />A little more connection.
+              <br />A little more care.
+            </p>
+            <a
+              href="https://github.com/Abdulfatai2000/campusCare"
+              className="cc-footer-source"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Github size={16} /> Follow the project <ArrowUpRight size={14} />
+              <span className="sr-only"> (opens in a new tab)</span>
+            </a>
+          </div>
+          {columns.map((column) => (
+            <div key={column.title}>
+              <h2>{column.title}</h2>
+              <nav aria-label={column.title}>
+                {column.links.map(([label, href]) => (
+                  <Link href={href} key={href}>
+                    {label}
+                  </Link>
+                ))}
+              </nav>
+            </div>
+          ))}
+        </div>
+        <div className="cc-footer-status">
+          <span className="cc-pill">IN DEVELOPMENT / FRONTEND PREVIEW</span>
+          <p>
+            No live submissions, bookings or account access. CampusCare is an
+            independent OAU-first concept, not affiliated with or endorsed by
+            any university.
+          </p>
+        </div>
+        <div className="cc-footer-bottom">
+          <span>
+            © {new Date().getFullYear()} CampusCare. Built with intention.
+          </span>
+          <div>
+            <span>Make yourself comfortable</span>
+            <ThemeToggle />
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
 }

@@ -1,3 +1,74 @@
-import { Fingerprint, Accessibility, BadgeCheck, MessageCircle } from "lucide-react";
-const principles=[{icon:Fingerprint,title:"Privacy before real data",detail:"Minimize collection, define retention and handle student information responsibly before an operational launch."},{icon:Accessibility,title:"Access is a design decision",detail:"Readable layouts, keyboard-friendly controls and reduced-motion support are part of the interface today."},{icon:BadgeCheck,title:"Verify before you publish",detail:"Campus contacts, providers and service details must be checked by authorized people before students rely on them."},{icon:MessageCircle,title:"Say what’s real",detail:"Clearly label examples, describe limitations and keep students informed about what a feature actually does."}];
-export function TrustSection(){return <section id="trust" className="cc-section"><div className="cc-container"><div className="cc-heading-row"><div><p className="cc-label">09 / Trust is part of the work</p><h2 className="cc-title">Build carefully.<br/>Communicate clearly.</h2></div><p className="cc-copy">These principles guide development. They are not a claim that production security or institutional verification is already in place.</p></div><div className="cc-principles">{principles.map(item=><article key={item.title}><item.icon size={28}/><h3>{item.title}</h3><p>{item.detail}</p></article>)}</div><div className="cc-trust-note"><strong>Where we are today</strong><p>Role-based permissions, verified authentication, server-side authorization and audit logging are planned for backend integration. Current workspace routes remain public frontend previews. Hiding links does not secure them. Please do not enter real personal or sensitive information.</p></div></div></section>;}
+import {
+  Fingerprint,
+  Accessibility,
+  BadgeCheck,
+  MessageCircle,
+} from "lucide-react";
+const principles = [
+  {
+    icon: Fingerprint,
+    title: "Privacy before real data",
+    detail:
+      "Minimize collection, define retention and handle student information responsibly before an operational launch.",
+  },
+  {
+    icon: Accessibility,
+    title: "Access is a design decision",
+    detail:
+      "Readable layouts, keyboard-friendly controls and reduced-motion support are part of the interface today.",
+  },
+  {
+    icon: BadgeCheck,
+    title: "Verify before you publish",
+    detail:
+      "Campus contacts, providers and service details must be checked by authorized people before students rely on them.",
+  },
+  {
+    icon: MessageCircle,
+    title: "Say what’s real",
+    detail:
+      "Clearly label examples, describe limitations and keep students informed about what a feature actually does.",
+  },
+];
+export function TrustSection() {
+  return (
+    <section id="trust" className="cc-section">
+      <div className="cc-container">
+        <div className="cc-heading-row">
+          <div>
+            <p className="cc-label">09 / Trust is part of the work</p>
+            <h2 className="cc-title">
+              Build carefully.
+              <br />
+              Communicate clearly.
+            </h2>
+          </div>
+          <p className="cc-copy">
+            These principles guide development. They are not a claim that
+            production security or institutional verification is already in
+            place.
+          </p>
+        </div>
+        <div className="cc-principles">
+          {principles.map((item) => (
+            <article key={item.title}>
+              <item.icon size={28} />
+              <h3>{item.title}</h3>
+              <p>{item.detail}</p>
+            </article>
+          ))}
+        </div>
+        <div className="cc-trust-note">
+          <strong>Where we are today</strong>
+          <p>
+            Role-based permissions, verified authentication, server-side
+            authorization and audit logging are planned for backend integration.
+            Current workspace routes remain public frontend previews. Hiding
+            links does not secure them. Please do not enter real personal or
+            sensitive information.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}

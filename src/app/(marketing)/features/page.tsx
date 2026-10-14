@@ -1,5 +1,53 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { FeatureShowcase } from "@/components/marketing/feature-showcase";
-export const metadata: Metadata = {title:"Features — a clearer path to campus support",description:"Explore eight CampusCare capabilities and see exactly which frontend previews exist and which workflows require secure backend integration."};
-export default function FeaturesPage(){return <><section className="cc-section cc-container"><p className="cc-label">The product / Built with intention</p><h1 className="cc-title">Everyday support.<br/>Thoughtfully connected.</h1><p className="cc-lede">From the first question to the next update, discover the experiences we’re designing — and the work still needed before they can serve a real campus.</p><div className="cc-actions"><Link className="cc-button" href="/auth/signup">Get started</Link><Link className="cc-button cc-button-secondary" href="/#how-it-works">How it works</Link></div><p className="cc-note">Account creation remains a disabled preview.</p></section><FeatureShowcase detailed/><section className="cc-section cc-container cc-rule"><p className="cc-label">Useful before impressive</p><h2 className="cc-title">A clear promise.<br/>An honest roadmap.</h2><p className="cc-lede">CampusCare does not currently accept real reports, reserve appointments or deliver notifications. The interface demonstrates the intended experience using fictional records.</p><Link href="/contact" className="cc-text-link">Help shape what comes next ↗</Link></section></>;}
+export const metadata: Metadata = {
+  title: "Features — a clearer path to campus support",
+  description:
+    "Explore eight CampusCare capabilities and see exactly which frontend previews exist and which workflows require secure backend integration.",
+};
+export default function FeaturesPage() {
+  return (
+    <>
+      <section className="cc-section cc-container">
+        <p className="cc-label">The product / Built with intention</p>
+        <h1 className="cc-title">
+          Everyday support.
+          <br />
+          Thoughtfully connected.
+        </h1>
+        <p className="cc-lede">
+          From the first question to the next update, discover the experiences
+          we’re designing — and the work still needed before they can serve a
+          real campus.
+        </p>
+        <div className="cc-actions">
+          <Link className="cc-button" href="/auth/signup">
+            Get started
+          </Link>
+          <Link className="cc-button cc-button-secondary" href="/#how-it-works">
+            How it works
+          </Link>
+        </div>
+        <p className="cc-note">Account creation remains a disabled preview.</p>
+      </section>
+      <FeatureShowcase detailed />
+      <section className="cc-section cc-container cc-rule">
+        <p className="cc-label">Useful before impressive</p>
+        <h2 className="cc-title">
+          A clear promise.
+          <br />
+          An honest roadmap.
+        </h2>
+        <p className="cc-lede">
+          CampusCare does not currently accept real reports, reserve
+          appointments or deliver notifications. The interface demonstrates the
+          intended experience using fictional records.
+        </p>
+        <Link href="/contact" className="cc-text-link">
+          Help shape what comes next ↗
+        </Link>
+      </section>
+    </>
+  );
+}

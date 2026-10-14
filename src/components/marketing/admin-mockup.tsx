@@ -1,2 +1,66 @@
 import { MockupFrame } from "./workspace-mockup";
-export function AdminMockup(){return <MockupFrame title="operations preview"><div className="cc-mockup-greeting"><div><span className="cc-note">A FICTIONAL SUPPORT TEAM</span><h3>A clearer view of what matters.</h3><p>Sample operations overview · no live university data</p></div></div><div className="cc-mockup-metrics"><div><strong>06</strong><span>Example reports</span></div><div><strong>02</strong><span>Awaiting review</span></div><div><strong>02</strong><span>Sample resolutions</span></div></div><div className="cc-mockup-heading"><strong>Sample request queue</strong><span>Priority</span></div>{[{name:"Water supply interruption",team:"Example facilities team",priority:"High"},{name:"Study hall lighting",team:"Example maintenance team",priority:"Medium"},{name:"Campus walkway",team:"Unassigned sample",priority:"Medium"}].map(item=><div className="cc-mockup-row" key={item.name}><div><strong>{item.name}</strong><small>{item.team}</small></div><span className="cc-mockup-status">{item.priority}</span></div>)}<div className="cc-sample-bars" aria-label="Fictional report distribution: two pending, two resolved, one in review, one in progress">{[33,33,17,17].map((width,index)=><span style={{width:width+"%"}} key={index}/>)}</div><p className="cc-note">Illustrative distribution · 6 example reports</p></MockupFrame>;}
+export function AdminMockup() {
+  return (
+    <MockupFrame title="operations preview">
+      <div className="cc-mockup-greeting">
+        <div>
+          <span className="cc-note">A FICTIONAL SUPPORT TEAM</span>
+          <h3>A clearer view of what matters.</h3>
+          <p>Sample operations overview · no live university data</p>
+        </div>
+      </div>
+      <div className="cc-mockup-metrics">
+        <div>
+          <strong>06</strong>
+          <span>Example reports</span>
+        </div>
+        <div>
+          <strong>02</strong>
+          <span>Awaiting review</span>
+        </div>
+        <div>
+          <strong>02</strong>
+          <span>Sample resolutions</span>
+        </div>
+      </div>
+      <div className="cc-mockup-heading">
+        <strong>Sample request queue</strong>
+        <span>Priority</span>
+      </div>
+      {[
+        {
+          name: "Water supply interruption",
+          team: "Example facilities team",
+          priority: "High",
+        },
+        {
+          name: "Study hall lighting",
+          team: "Example maintenance team",
+          priority: "Medium",
+        },
+        {
+          name: "Campus walkway",
+          team: "Unassigned sample",
+          priority: "Medium",
+        },
+      ].map((item) => (
+        <div className="cc-mockup-row" key={item.name}>
+          <div>
+            <strong>{item.name}</strong>
+            <small>{item.team}</small>
+          </div>
+          <span className="cc-mockup-status">{item.priority}</span>
+        </div>
+      ))}
+      <div
+        className="cc-sample-bars"
+        aria-label="Fictional report distribution: two pending, two resolved, one in review, one in progress"
+      >
+        {[33, 33, 17, 17].map((width, index) => (
+          <span style={{ width: width + "%" }} key={index} />
+        ))}
+      </div>
+      <p className="cc-note">Illustrative distribution · 6 example reports</p>
+    </MockupFrame>
+  );
+}
