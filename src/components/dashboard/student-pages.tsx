@@ -5,6 +5,7 @@ import { ServiceDirectory } from "@/components/services/service-directory";
 import { AppointmentDraftForm } from "@/components/appointments/appointment-draft-form";
 import { AppointmentDirectory } from "@/components/appointments/appointment-directory";
 import { EmergencyDirectory } from "@/components/emergency/emergency-directory";
+import { NotificationPreview } from "@/components/notifications/notification-preview";
 import { StudentDashboard } from "@/components/dashboard/student-dashboard";
 import { StudentIssueDetailView } from "@/components/issues/issue-detail-view";
 import { StudentServiceDetailView } from "@/components/services/service-detail-view";
@@ -36,7 +37,7 @@ export function StudentPreviewPage({page}:{page:StudentPage}){
  {page==="appointments"&&<AppointmentDirectory/>}
  {page==="appointments-new"&&<AppointmentDraftForm/>}
  {page==="emergency"&&<EmergencyDirectory/>}
- {page==="notifications"&&<EmptyState title="Nothing here yet." description="When real accounts and server notifications are implemented, relevant updates will appear here." action={<Bell color="var(--accent)" size={27}/>}/>}
+ {page==="notifications"&&<NotificationPreview/>}
  {page==="profile"&&<div className="surface" style={{padding:28,maxWidth:670}}><div className="eyebrow">Account preview</div><h2 style={{fontSize:24}}>Your details, your control.</h2><p className="muted small">No personal account is connected. Profile management will be enabled after secure authentication.</p><div className="form-grid" style={{marginTop:22}}>{field("Full name","Sign in to view your name")}{field("University email","Sign in to view your email")}{field("Campus","Select your institution")}<button className="button" disabled>Save profile (coming soon)</button></div></div>}
  {page==="settings"&&<div className="card-grid"><div className="card"><Info color="var(--accent)" size={25}/><h3>Appearance</h3><p>Use the theme switch in the top bar to toggle dark and light themes. Your selection is saved on this device.</p></div><div className="card"><Bell color="var(--accent)" size={25}/><h3>Notifications</h3><p>Notification preferences will be available once real accounts are enabled.</p></div><div className="card"><Users color="var(--accent)" size={25}/><h3>Privacy</h3><p>Privacy controls and account export will be designed before real student data is collected.</p></div></div>}
  </>;
