@@ -9,7 +9,10 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "check": "npm run typecheck && npm run lint && npm run build",
-    "test:admin": "playwright test",
+    "test:admin": "playwright test admin.spec.ts",
+    "test:marketing": "playwright test marketing.spec.ts",
+    "test:e2e": "playwright test",
+    "smoke:marketing": "node scripts/smoke-marketing.mjs",
     "smoke:admin": "node scripts/smoke-phase4.mjs"
   },
   "dependencies": {
