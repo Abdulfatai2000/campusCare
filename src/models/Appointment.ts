@@ -1,4 +1,4 @@
-import mongoose,{Schema,models,model} from "mongoose";
+import {Schema,models,model} from "mongoose";
 import { APPOINTMENT_STATUSES } from "@/types/domain";
 const AppointmentSchema=new Schema({
  campusId:{type:Schema.Types.ObjectId,ref:"Campus",required:true},

@@ -1,4 +1,4 @@
-import mongoose,{Schema,models,model} from "mongoose";
+import {Schema,models,model} from "mongoose";
 import { ISSUE_STATUSES } from "@/types/domain";
 const IssueUpdateSchema=new Schema({
  campusId:{type:Schema.Types.ObjectId,ref:"Campus",required:true},

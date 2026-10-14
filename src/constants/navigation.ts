@@ -1,4 +1,4 @@
-import { CalendarDays, LayoutDashboard, ClipboardList, LifeBuoy, ShieldAlert, UserRound, Settings2, Bell, Building2, ChartNoAxesCombined, UsersRound, Stethoscope, FilePlus2, type LucideIcon } from "lucide-react";
+import { CalendarDays, LayoutDashboard, ClipboardList, ShieldAlert, UserRound, Settings2, Bell, Building2, ChartNoAxesCombined, UsersRound, Stethoscope, FilePlus2, type LucideIcon } from "lucide-react";
 
 export interface NavEntry { label: string; href: string; icon: LucideIcon }
 export const studentNavigation: NavEntry[] = [

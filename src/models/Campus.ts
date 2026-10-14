@@ -1,4 +1,4 @@
-import mongoose,{Schema,models,model} from "mongoose";
+import {Schema,models,model} from "mongoose";
 const CampusSchema=new Schema({
  name:{type:String,required:true,trim:true,maxlength:160},
  shortName:{type:String,required:true,trim:true,maxlength:30},

@@ -1,4 +1,4 @@
-import mongoose,{Schema,models,model} from "mongoose";
+import {Schema,models,model} from "mongoose";
 import { USER_ROLES } from "@/types/domain";
 const UserSchema=new Schema({
  name:{type:String,required:true,trim:true,maxlength:120},

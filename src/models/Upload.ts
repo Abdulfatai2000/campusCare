@@ -1,4 +1,4 @@
-import mongoose,{Schema,models,model} from "mongoose";
+import {Schema,models,model} from "mongoose";
 const UploadSchema=new Schema({
  campusId:{type:Schema.Types.ObjectId,ref:"Campus",required:true},
  ownerId:{type:Schema.Types.ObjectId,ref:"User",required:true},
