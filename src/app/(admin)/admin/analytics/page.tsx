@@ -1,3 +1,27 @@
 import { AdminCharts } from "@/components/admin/admin-charts";
 import { PageHeading } from "@/components/shared/page-heading";
-export default function Page(){return <><PageHeading eyebrow="Operations / Analytics" title="See the shape of campus care." description="Explore category and status distributions derived only from the fictional report dataset."/><AdminCharts/><section className="admin-section"><h2>How to read this preview</h2><p className="muted">Each bar shows the number of sample reports in a category or status, divided by all sample reports. Percentages are rounded and may not sum to exactly 100%. Local status changes appear here immediately.</p><p className="notice">These are not university performance figures. Resolution times, trends and comparisons are unavailable until verified timestamps and authorized, appropriately anonymized data exist.</p></section></>;}
+export default function Page() {
+  return (
+    <>
+      <PageHeading
+        eyebrow="Operations / Analytics"
+        title="See the shape of campus care."
+        description="Explore category and status distributions derived only from the fictional report dataset."
+      />
+      <AdminCharts />
+      <section className="admin-section">
+        <h2>How to read this preview</h2>
+        <p className="muted">
+          Each bar shows the number of sample reports in a category or status,
+          divided by all sample reports. Percentages are rounded and may not sum
+          to exactly 100%. Local status changes appear here immediately.
+        </p>
+        <p className="notice">
+          These are not university performance figures. Resolution times, trends
+          and comparisons are unavailable until verified timestamps and
+          authorized, appropriately anonymized data exist.
+        </p>
+      </section>
+    </>
+  );
+}

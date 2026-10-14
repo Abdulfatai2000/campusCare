@@ -1,14 +1,129 @@
 "use client";
 import { useState } from "react";
 import { adminUsers } from "@/data/admin-preview";
-import { DataTable, FilterSelect, NoResults, PreviewDialog, SearchField, StatusBadge } from "./admin-ui";
+import {
+  DataTable,
+  FilterSelect,
+  NoResults,
+  PreviewDialog,
+  SearchField,
+  StatusBadge,
+} from "./admin-ui";
 
 export function AdminUsers() {
   const [query, setQuery] = useState("");
   const [role, setRole] = useState("");
   const [status, setStatus] = useState("");
-  const [selected, setSelected] = useState<(typeof adminUsers)[number] | null>(null);
-  const reset = () => { setQuery(""); setRole(""); setStatus(""); };
-  const rows = adminUsers.filter(user => `${user.name} ${user.id} ${user.department}`.toLowerCase().includes(query.trim().toLowerCase()) && (!role || user.role === role) && (!status || user.status === status));
-  return <><p className="notice">Fictional people only. Role changes, account suspension and permission updates are disabled until secure backend authorization exists.</p><div className="admin-toolbar"><SearchField label="Search users" value={query} onChange={setQuery} /><FilterSelect label="Role" value={role} onChange={setRole} options={["Student", "Staff", "Campus admin"]} /><FilterSelect label="Account status" value={status} onChange={setStatus} options={["Active", "Inactive"]} /><button className="button button-outline" onClick={reset}>Clear filters</button></div><p className="small muted" role="status">{rows.length} matching example users</p>{rows.length ? <DataTable caption="Example people — no real identities or personal contact information" headings={["Person", "Role", "Account status", "Details"]}>{rows.map(user => <tr key={user.id}><td><strong>{user.name}</strong><div className="muted small">{user.id}</div></td><td><StatusBadge value={user.role} /></td><td><StatusBadge value={user.status} /></td><td><button className="button button-outline" aria-label={`View ${user.name}`} onClick={() => setSelected(user)}>View preview</button></td></tr>)}</DataTable> : <NoResults reset={reset} />}{selected && <PreviewDialog title={selected.name} onClose={() => setSelected(null)}><p className="muted">{selected.detail}</p><dl className="admin-detail-list"><dt>Example ID</dt><dd>{selected.id}</dd><dt>Department</dt><dd>{selected.department}</dd><dt>Account status</dt><dd><StatusBadge value={selected.status} /></dd></dl><fieldset disabled className="admin-section"><legend>Role-management preview (disabled)</legend><label className="field">Role<select defaultValue={selected.role}><option>Student</option><option>Staff</option><option>Campus admin</option></select></label><div className="admin-actions"><button className="button">Save role</button><button className="button button-outline">Suspend account</button></div></fieldset><p className="notice">These controls have no action handlers. Real permissions require verified identity, campus-scoped authorization and audited server operations.</p></PreviewDialog>}</>;
+  const [selected, setSelected] = useState<(typeof adminUsers)[number] | null>(
+    null,
+  );
+  const reset = () => {
+    setQuery("");
+    setRole("");
+    setStatus("");
+  };
+  const rows = adminUsers.filter(
+    (user) =>
+      `${user.name} ${user.id} ${user.department}`
+        .toLowerCase()
+        .includes(query.trim().toLowerCase()) &&
+      (!role || user.role === role) &&
+      (!status || user.status === status),
+  );
+  return (
+    <>
+      <p className="notice">
+        Fictional people only. Role changes, account suspension and permission
+        updates are disabled until secure backend authorization exists.
+      </p>
+      <div className="admin-toolbar">
+        <SearchField label="Search users" value={query} onChange={setQuery} />
+        <FilterSelect
+          label="Role"
+          value={role}
+          onChange={setRole}
+          options={["Student", "Staff", "Campus admin"]}
+        />
+        <FilterSelect
+          label="Account status"
+          value={status}
+          onChange={setStatus}
+          options={["Active", "Inactive"]}
+        />
+        <button className="button button-outline" onClick={reset}>
+          Clear filters
+        </button>
+      </div>
+      <p className="small muted" role="status">
+        {rows.length} matching example users
+      </p>
+      {rows.length ? (
+        <DataTable
+          caption="Example people — no real identities or personal contact information"
+          headings={["Person", "Role", "Account status", "Details"]}
+        >
+          {rows.map((user) => (
+            <tr key={user.id}>
+              <td>
+                <strong>{user.name}</strong>
+                <div className="muted small">{user.id}</div>
+              </td>
+              <td>
+                <StatusBadge value={user.role} />
+              </td>
+              <td>
+                <StatusBadge value={user.status} />
+              </td>
+              <td>
+                <button
+                  className="button button-outline"
+                  aria-label={`View ${user.name}`}
+                  onClick={() => setSelected(user)}
+                >
+                  View preview
+                </button>
+              </td>
+            </tr>
+          ))}
+        </DataTable>
+      ) : (
+        <NoResults reset={reset} />
+      )}
+      {selected && (
+        <PreviewDialog title={selected.name} onClose={() => setSelected(null)}>
+          <p className="muted">{selected.detail}</p>
+          <dl className="admin-detail-list">
+            <dt>Example ID</dt>
+            <dd>{selected.id}</dd>
+            <dt>Department</dt>
+            <dd>{selected.department}</dd>
+            <dt>Account status</dt>
+            <dd>
+              <StatusBadge value={selected.status} />
+            </dd>
+          </dl>
+          <fieldset disabled className="admin-section">
+            <legend>Role-management preview (disabled)</legend>
+            <label className="field">
+              Role
+              <select defaultValue={selected.role}>
+                <option>Student</option>
+                <option>Staff</option>
+                <option>Campus admin</option>
+              </select>
+            </label>
+            <div className="admin-actions">
+              <button className="button">Save role</button>
+              <button className="button button-outline">Suspend account</button>
+            </div>
+          </fieldset>
+          <p className="notice">
+            These controls have no action handlers. Real permissions require
+            verified identity, campus-scoped authorization and audited server
+            operations.
+          </p>
+        </PreviewDialog>
+      )}
+    </>
+  );
 }
