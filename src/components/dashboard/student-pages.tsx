@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { IssueDraftForm } from "@/components/issues/issue-draft-form";
 import { IssueDirectory } from "@/components/issues/issue-directory";
+import { ServiceDirectory } from "@/components/services/service-directory";
 import { ArrowRight, Bell, CalendarClock, CalendarDays, ClipboardList, HeartHandshake, Info, MapPin, Plus, ShieldAlert, Wrench, Users } from "lucide-react";
 import { PageHeading } from "@/components/shared/page-heading";
 import { MetricCard } from "@/components/shared/metric-card";
@@ -31,7 +32,7 @@ export function StudentPreviewPage({page}:{page:StudentPage}){
  <h2 style={{fontSize:23,margin:"42px 0 15px"}}>Example recent reports</h2><div className="preview-list">{previewIssues.slice(0,2).map(x=><IssueCard key={x.id} issue={x}/>)}</div></>}
  {page==="report-issue"&&<IssueDraftForm/>}
  {page==="my-reports"&&<IssueDirectory/>}
- {page==="services"&&<div className="card-grid">{previewServices.map(x=><ServiceCard key={x.id} service={x}/>)}</div>}
+ {page==="services"&&<ServiceDirectory/>}
  {page==="appointments"&&<><div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:18,flexWrap:"wrap",gap:12}}><p className="small muted">Example appointments (not real bookings).</p><Link href="/appointments/new" className="button">Request appointment <Plus size={15}/></Link></div><div className="preview-list">{previewAppointments.map(x=><div className="preview-item" key={x.id}><div><strong>{x.service}</strong><p>{x.date}</p></div><span className="status">{x.status}</span></div>)}</div></>}
  {page==="appointments-new"&&<div className="surface" style={{padding:26,maxWidth:750}}><div className="notice" style={{marginBottom:24}}>No participating offices or available time slots have been connected yet. This is only a booking-form preview.</div><div className="form-grid"><label className="field">Campus service<select disabled defaultValue=""><option value="">Choose a service</option>{previewServices.map(x=><option key={x.id}>{x.title}</option>)}</select></label><label className="field">Preferred date<input type="date" disabled/></label><label className="field">Notes<textarea disabled placeholder="What would you like assistance with?"/></label><button className="button" disabled>Request appointment (coming soon)</button></div></div>}
  {page==="emergency"&&<><div className="notice" style={{marginBottom:22,borderColor:"#e5ac5c"}}><ShieldAlert size={15} style={{display:"inline",verticalAlign:"middle",marginRight:7}}/>Emergency numbers on this page are intentionally not populated until verified. For immediate help, contact the appropriate official emergency services available in your area.</div><div className="card-grid">{previewEmergencyContacts.map(c=><article className="card" key={c.label}><ShieldAlert color="var(--accent)" size={28}/><h3>{c.label}</h3><p>{c.detail}</p><span className="eyebrow" style={{display:"block",marginTop:24}}>AWAITING VERIFICATION</span></article>)}</div></>}
