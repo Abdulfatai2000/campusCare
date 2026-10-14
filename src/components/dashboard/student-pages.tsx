@@ -4,6 +4,7 @@ import { IssueDirectory } from "@/components/issues/issue-directory";
 import { ServiceDirectory } from "@/components/services/service-directory";
 import { AppointmentDraftForm } from "@/components/appointments/appointment-draft-form";
 import { StudentDashboard } from "@/components/dashboard/student-dashboard";
+import { StudentIssueDetailView } from "@/components/issues/issue-detail-view";
 import { ArrowRight, Bell, CalendarClock, CalendarDays, ClipboardList, HeartHandshake, Info, MapPin, Plus, ShieldAlert, Wrench, Users } from "lucide-react";
 import { PageHeading } from "@/components/shared/page-heading";
 import { MetricCard } from "@/components/shared/metric-card";
@@ -40,10 +41,7 @@ export function StudentPreviewPage({page}:{page:StudentPage}){
  {page==="settings"&&<div className="card-grid"><div className="card"><Info color="var(--accent)" size={25}/><h3>Appearance</h3><p>Use the theme switch in the top bar to toggle dark and light themes. Your selection is saved on this device.</p></div><div className="card"><Bell color="var(--accent)" size={25}/><h3>Notifications</h3><p>Notification preferences will be available once real accounts are enabled.</p></div><div className="card"><Users color="var(--accent)" size={25}/><h3>Privacy</h3><p>Privacy controls and account export will be designed before real student data is collected.</p></div></div>}
  </>;
 }
-export function StudentIssueDetail({id}:{id:string}){
- const issue=previewIssues.find(x=>x.id===id);
- return <><PageHeading eyebrow="03 / My reports / Detail" title={issue?.title??"Report not found"} description="Sample report details are shown for UI demonstration only."/><div className="surface" style={{padding:26,maxWidth:770}}>{issue?<><div style={{display:"flex",gap:14,flexWrap:"wrap",marginBottom:20}}><span className="chip">{issue.status.replaceAll("_"," ")}</span><span className="chip">{issue.priority} priority</span></div><p><MapPin size={16} style={{display:"inline",marginRight:8}}/>{issue.location}</p><p className="muted">ID: {issue.id} · {issue.category} · {issue.createdAt}</p><div className="notice" style={{marginTop:25}}>Status changes, attachments, comments and timeline will be connected to the secure backend in a later phase.</div></>:<p className="muted">This identifier does not match a demo report. No private data is accessible in preview mode.</p>}</div><Link href="/my-reports" className="button button-outline" style={{marginTop:20}}>← All reports</Link></>;
-}
+export function StudentIssueDetail({id}:{id:string}){return <StudentIssueDetailView id={id}/>;}
 export function StudentServiceDetail({id}:{id:string}){
  const service=previewServices.find(x=>x.id===id);
  return <><PageHeading eyebrow="04 / Campus services / Detail" title={service?.title??"Service not found"} description="A preview of how detailed campus-service listings will work."/><div className="surface" style={{padding:28,maxWidth:760}}>{service?<><span className="chip">{service.category}</span><p className="lede" style={{margin:"22px 0"}}>{service.description}</p><div className="notice">Opening hours, location, phone contacts and live booking availability must be verified by the provider first.</div><Link href="/appointments/new" className="button" style={{marginTop:22}}>View appointment preview <CalendarClock size={16}/></Link></>:<p className="muted">This service is not part of the preview catalog.</p>}</div><Link href="/services" className="button button-outline" style={{marginTop:20}}>← All services</Link></>;
