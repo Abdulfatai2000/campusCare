@@ -8,6 +8,9 @@ const requiredFiles = ["src/app/phase1.css","src/app/phase1-auth.css","src/compo
 for (const f of requiredFiles) assert.ok(existsSync(f), "Missing Phase 1 file: "+f);
 const root = readFileSync("src/app/layout.tsx","utf8");
 assert.ok(root.includes('"./phase1.css"') && root.includes('"./phase1-auth.css"'),"Phase 1 stylesheets must be imported");
+const header = readFileSync("src/components/layout/site-header.tsx","utf8");
+assert.ok(header.includes('id="campuscare-mobile-navigation"') && header.includes("hidden={!menu}"),"Mobile disclosure target must remain mounted and hidden when closed");
+assert.ok(header.includes('placeholder="Find a CampusCare page..."'),"Search must describe its actual page-navigation behavior");
 const auth = readFileSync("src/components/auth/auth-preview.tsx","utf8");
 assert.ok(auth.includes("Frontend preview only."),"Authentication UI must not imply live signup or password reset");
 const processInfo = spawn(process.execPath,["node_modules/next/dist/bin/next","start","-p",String(port),"--hostname","127.0.0.1"],{stdio:["ignore","pipe","pipe"],env:{...process.env,NODE_ENV:"production"}});
