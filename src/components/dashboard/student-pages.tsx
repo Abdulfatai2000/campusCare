@@ -5,6 +5,7 @@ import { ServiceDirectory } from "@/components/services/service-directory";
 import { AppointmentDraftForm } from "@/components/appointments/appointment-draft-form";
 import { StudentDashboard } from "@/components/dashboard/student-dashboard";
 import { StudentIssueDetailView } from "@/components/issues/issue-detail-view";
+import { StudentServiceDetailView } from "@/components/services/service-detail-view";
 import { ArrowRight, Bell, CalendarClock, CalendarDays, ClipboardList, HeartHandshake, Info, MapPin, Plus, ShieldAlert, Wrench, Users } from "lucide-react";
 import { PageHeading } from "@/components/shared/page-heading";
 import { MetricCard } from "@/components/shared/metric-card";
@@ -42,7 +43,4 @@ export function StudentPreviewPage({page}:{page:StudentPage}){
  </>;
 }
 export function StudentIssueDetail({id}:{id:string}){return <StudentIssueDetailView id={id}/>;}
-export function StudentServiceDetail({id}:{id:string}){
- const service=previewServices.find(x=>x.id===id);
- return <><PageHeading eyebrow="04 / Campus services / Detail" title={service?.title??"Service not found"} description="A preview of how detailed campus-service listings will work."/><div className="surface" style={{padding:28,maxWidth:760}}>{service?<><span className="chip">{service.category}</span><p className="lede" style={{margin:"22px 0"}}>{service.description}</p><div className="notice">Opening hours, location, phone contacts and live booking availability must be verified by the provider first.</div><Link href="/appointments/new" className="button" style={{marginTop:22}}>View appointment preview <CalendarClock size={16}/></Link></>:<p className="muted">This service is not part of the preview catalog.</p>}</div><Link href="/services" className="button button-outline" style={{marginTop:20}}>← All services</Link></>;
-}
+export function StudentServiceDetail({id}:{id:string}){return <StudentServiceDetailView id={id}/>;}
