@@ -3,6 +3,7 @@ import { IssueDraftForm } from "@/components/issues/issue-draft-form";
 import { IssueDirectory } from "@/components/issues/issue-directory";
 import { ServiceDirectory } from "@/components/services/service-directory";
 import { AppointmentDraftForm } from "@/components/appointments/appointment-draft-form";
+import { StudentDashboard } from "@/components/dashboard/student-dashboard";
 import { ArrowRight, Bell, CalendarClock, CalendarDays, ClipboardList, HeartHandshake, Info, MapPin, Plus, ShieldAlert, Wrench, Users } from "lucide-react";
 import { PageHeading } from "@/components/shared/page-heading";
 import { MetricCard } from "@/components/shared/metric-card";
@@ -27,10 +28,7 @@ const field=(label:string,placeholder:string) => <label className="field" key={l
 export function StudentPreviewPage({page}:{page:StudentPage}){
  const meta=descriptions[page];
  return <><PageHeading {...meta}/>
- {page==="dashboard"&&<><div className="metric-grid"><MetricCard icon={<ClipboardList size={23}/>} value="03" label="Example reports"/><MetricCard icon={<Wrench size={23}/>} value="01" label="Example in progress"/><MetricCard icon={<CalendarDays size={23}/>} value="02" label="Example appointments"/><MetricCard icon={<HeartHandshake size={23}/>} value="04" label="Service categories"/></div>
- <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",margin:"38px 0 16px",gap:12}}><h2 style={{fontSize:23,margin:0}}>Quick actions</h2><span className="eyebrow">SAMPLE EXPERIENCE</span></div>
- <div className="card-grid"><ServiceCard service={previewServices[0]}/><Link href="/report-issue" className="card"><Plus color="var(--accent)" size={29}/><h3>Report an issue</h3><p>See how the campus reporting flow will work.</p><span className="eyebrow" style={{marginTop:22,display:"block"}}>Open preview ↗</span></Link><Link href="/emergency" className="card"><ShieldAlert color="var(--accent)" size={29}/><h3>Emergency information</h3><p>Know where to look for verified campus support.</p><span className="eyebrow" style={{marginTop:22,display:"block"}}>Open preview ↗</span></Link></div>
- <h2 style={{fontSize:23,margin:"42px 0 15px"}}>Example recent reports</h2><div className="preview-list">{previewIssues.slice(0,2).map(x=><IssueCard key={x.id} issue={x}/>)}</div></>}
+ {page==="dashboard"&&<StudentDashboard/>}
  {page==="report-issue"&&<IssueDraftForm/>}
  {page==="my-reports"&&<IssueDirectory/>}
  {page==="services"&&<ServiceDirectory/>}
