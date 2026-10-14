@@ -11,7 +11,11 @@ assert.ok(root.includes('"./phase1.css"') && root.includes('"./phase1-auth.css"'
 const header = readFileSync("src/components/layout/site-header.tsx","utf8");
 assert.ok(header.includes('id="campuscare-mobile-navigation"') && header.includes("hidden={!menu}"),"Mobile disclosure target must remain mounted and hidden when closed");
 assert.ok(header.includes('placeholder="Find a CampusCare page..."'),"Search must describe its actual page-navigation behavior");
+const contact = readFileSync("src/components/marketing/contact-form.tsx","utf8");
+assert.ok(contact.includes('aria-label="Prepare an email to CampusCare"'),"Contact form should announce its email-draft purpose");
+assert.ok(contact.includes('minLength={2}'),"Contact form should validate name length");
 const auth = readFileSync("src/components/auth/auth-preview.tsx","utf8");
+assert.ok(auth.includes("const inputId=useId()") && auth.includes("htmlFor={inputId}") && auth.includes("id={inputId}"),"Password inputs require programmatically associated labels");
 assert.ok(auth.includes("Frontend preview only."),"Authentication UI must not imply live signup or password reset");
 const processInfo = spawn(process.execPath,["node_modules/next/dist/bin/next","start","-p",String(port),"--hostname","127.0.0.1"],{stdio:["ignore","pipe","pipe"],env:{...process.env,NODE_ENV:"production"}});
 let output = "";
