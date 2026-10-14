@@ -12,5 +12,5 @@ export function Reveal({children,className="",delay=0}:{children:ReactNode;class
    observer.observe(element);
    return ()=>observer.disconnect();
  },[]);
- return <div ref={node} className={["p1-reveal",seen?"is-seen":"",className].filter(Boolean).join(" ")} style={{transitionDelay:delay+"ms"}}>{children}</div>;
+ return <div ref={node} className={["p1-reveal",seen?"is-seen":"",className].filter(Boolean).join(" ")} style={{animationDelay:delay+"ms"}}>{children}</div>;
 }
