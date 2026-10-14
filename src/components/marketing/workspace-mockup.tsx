@@ -1,0 +1,9 @@
+import { Bell, LayoutDashboard, ClipboardList, CalendarDays, Check, ArrowUpRight } from "lucide-react";
+import type { ReactNode } from "react";
+
+export function MockupFrame({ title, children }: { title: string; children: ReactNode }) {
+  return <figure className="cc-mockup"><div className="cc-mockup-top"><span className="cc-window-dots" aria-hidden="true"><i/><i/><i/></span><span>campuscare / {title}</span><span className="cc-mockup-demo">DEMO</span></div><div className="cc-mockup-body">{children}</div><figcaption>Illustrative interface · fictional data · no live account</figcaption></figure>;
+}
+export function StudentMockup() {
+  return <MockupFrame title="student workspace"><div className="cc-mockup-greeting"><div><span className="cc-note">YOUR SPACE TO FIND SUPPORT</span><h3>A clearer campus day.</h3><p>Everything you need to find your next step.</p></div><span className="cc-mockup-avatar" aria-hidden="true">CC</span></div><div className="cc-mockup-metrics"><div><ClipboardList size={18}/><strong>03</strong><span>Example reports</span></div><div><CalendarDays size={18}/><strong>01</strong><span>Sample request</span></div><div><Bell size={18}/><strong>02</strong><span>Example updates</span></div></div><div className="cc-mockup-heading"><strong>Your recent activity</strong><LayoutDashboard size={16}/></div><div className="cc-mockup-row"><span className="cc-mockup-icon"><Check size={17}/></span><div><strong>Study hall lighting</strong><small>Facilities · example report</small></div><span className="cc-mockup-status">In progress</span></div><div className="cc-mockup-row"><span className="cc-mockup-icon cc-blue"><CalendarDays size={17}/></span><div><strong>Student support</strong><small>Illustrative appointment request</small></div><ArrowUpRight size={17}/></div><div className="cc-mockup-bottom"><span>A little guidance goes a long way.</span><span aria-hidden="true">↗</span></div></MockupFrame>;
+}
